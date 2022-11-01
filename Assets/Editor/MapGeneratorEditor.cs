@@ -24,6 +24,6 @@ public class MapGeneratorEditor : Editor
         }
 
 
-        base.OnInspectorGUI();
+        
     }
 }
