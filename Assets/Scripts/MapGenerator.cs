@@ -12,13 +12,14 @@ public class MapGenerator : MonoBehaviour
     public float persistance;
     public float lacunarity;
 
+
     public int seed;
     public Vector2 offset;
 
     public bool autoUpdate;
 
     public TerrainType[] regions;
-    public enum DrawMode {NoiseMap, ColourMap };
+    public enum DrawMode {NoiseMap, ColourMap, Mesh};
     public DrawMode drawMode;
 
     public void GenerateMap()
@@ -34,7 +35,7 @@ public class MapGenerator : MonoBehaviour
                 float currentHeight = noiseMap[x, y];
                 for (int i=0; i < regions.Length; i++)
                 {
-                    if(currentHeight <= regions[i].height)
+                    if(currentHeight <= regions[i].height)  //tu mozna zrobic zakres od do 
                     {
                         colourMap[y * mapWidth + x] = regions[i].colour;
                         break;
@@ -44,7 +45,14 @@ public class MapGenerator : MonoBehaviour
         }
 
         MapDisplay display = FindObjectOfType<MapDisplay>();
-        display.DrawNoiseMap(noiseMap);
+        if(drawMode == DrawMode.NoiseMap) {
+            display.DrawTexture(TextureGenerator.TextureFromHeightMap(noiseMap));
+
+        }else if(drawMode == DrawMode.ColourMap) {
+            display.DrawTexture(TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
+        }else if(drawMode == DrawMode.Mesh) {
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap), TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
+        }
     }
 
     private void OnValidate()
