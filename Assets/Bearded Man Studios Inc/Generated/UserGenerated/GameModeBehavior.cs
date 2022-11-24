@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace BeardedManStudios.Forge.Networking.Generated
 {
-	[GeneratedRPC("{\"types\":[]")]
-	[GeneratedRPCVariableNames("{\"types\":[]")]
+	[GeneratedRPC("{\"types\":[[\"int\"]]")]
+	[GeneratedRPCVariableNames("{\"types\":[[\"seed\"]]")]
 	public abstract partial class GameModeBehavior : NetworkBehavior
 	{
+		public const byte RPC_GENERATE_MAP = 0 + 5;
 		
 		public GameModeNetworkObject networkObject = null;
 
@@ -21,6 +22,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 			networkObject.AttachedBehavior = this;
 
 			base.SetupHelperRpcs(networkObject);
+			networkObject.RegisterRpc("GenerateMap", GenerateMap, typeof(int));
 
 			networkObject.onDestroy += DestroyGameObject;
 
@@ -95,6 +97,11 @@ namespace BeardedManStudios.Forge.Networking.Generated
 			networkObject.SnapInterpolations();
 		}
 
+		/// <summary>
+		/// Arguments:
+		/// int seed
+		/// </summary>
+		public abstract void GenerateMap(RpcArgs args);
 
 		// DO NOT TOUCH, THIS GETS GENERATED PLEASE EXTEND THIS CLASS IF YOU WISH TO HAVE CUSTOM CODE ADDITIONS
 	}

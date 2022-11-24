@@ -1,9 +1,7 @@
+using System.Collections.Generic;
 using BeardedManStudios.Forge.Networking;
 using BeardedManStudios.Forge.Networking.Generated;
 using BeardedManStudios.Forge.Networking.Unity;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 /// <summary>
 /// A gamemode class network object, owned and instantiated by the server
@@ -21,12 +19,17 @@ public class GameMode : GameModeBehavior
             return;
         }
 
+        MapGenerator.Instance.GenerateRandomMap();
+        
         NetworkManager.Instance.Networker.playerAccepted += (player, sender) =>
         {
             MainThreadManager.Run(() =>
             {
                 //Do some counting logic here for a gamemode, eg, assign team to newly joined player, or restart round if enough people joined
                 //Remember to remove players from counter in playerDisconnected event as well
+                
+                networkObject.SendRpc(player, RPC_GENERATE_MAP,
+                    MapGenerator.Instance.seed);
             });
         };
 
@@ -59,4 +62,9 @@ public class GameMode : GameModeBehavior
         };
     }
 
+    public override void GenerateMap(RpcArgs args)
+    {
+        MapGenerator.Instance.seed = args.GetNext<int>();
+        MapGenerator.Instance.GenerateMap();
+    }
 }
