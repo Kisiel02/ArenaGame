@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor (typeof(MapGenerator))]
-public class MapGeneratorEditor : Editor
+public class MapGeneratorEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {
@@ -23,7 +21,7 @@ public class MapGeneratorEditor : Editor
             mapGen.GenerateMap();
         }
 
-
+ 
         
     }
 }

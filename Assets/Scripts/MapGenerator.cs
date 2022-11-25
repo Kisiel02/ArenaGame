@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 {
     public static MapGenerator Instance { get; private set; }
-
+    
     public int mapWidth;
     public int mapHeight;
     public float noiseScale;
@@ -31,10 +31,6 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
     public DrawMode drawMode;
     public AnimationCurve meshHeightCurve;
-
-    [Header("Script refrences")] [SerializeField]
-    //reference to the main networked script
-    private NetworkedPlayer np;
     
     private void Awake()
     {

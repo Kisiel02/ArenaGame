@@ -19,7 +19,7 @@ public class GameMode : GameModeBehavior
             return;
         }
 
-        MapGenerator.Instance.GenerateRandomMap();
+        ArenaGenerator.Instance.GenerateRandomArena();
         
         NetworkManager.Instance.Networker.playerAccepted += (player, sender) =>
         {
@@ -29,7 +29,7 @@ public class GameMode : GameModeBehavior
                 //Remember to remove players from counter in playerDisconnected event as well
                 
                 networkObject.SendRpc(player, RPC_GENERATE_MAP,
-                    MapGenerator.Instance.seed);
+                    ArenaGenerator.Instance.mapGenerator.seed);
             });
         };
 
