@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/ArenaGame/Scenes/MainMenu.unity
     guid: d474927273699174ab9ff120d9b794ed
   - enabled: 1
+    path: Assets/ArenaGame/Scenes/GeneratedArena.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
     path: Assets/ArenaGame/Scenes/ArenaScene.unity
     guid: 80227f7977b88964ca3ab773b7e508d9
   m_configObjects: {}

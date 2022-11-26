@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BeardedManStudios.Forge.Networking.Generated
 {
-	[GeneratedInterpol("{\"inter\":[0.15,0.15,0.15,0.15,0.15,0]")]
+	[GeneratedInterpol("{\"inter\":[0,15,0,15,0,15]")]
 	public partial class PlayerNetworkObject : NetworkObject
 	{
 		public const int IDENTITY = 3;
@@ -17,7 +17,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		#pragma warning restore 0067
 		private Vector3 _position;
 		public event FieldEvent<Vector3> positionChanged;
-		public InterpolateVector3 positionInterpolation = new InterpolateVector3() { LerpT = 0.15f, Enabled = true };
+		public InterpolateVector3 positionInterpolation = new InterpolateVector3() { LerpT = 0f, Enabled = false };
 		public Vector3 position
 		{
 			get { return _position; }
@@ -47,7 +47,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		}
 		private Quaternion _rotation;
 		public event FieldEvent<Quaternion> rotationChanged;
-		public InterpolateQuaternion rotationInterpolation = new InterpolateQuaternion() { LerpT = 0.15f, Enabled = true };
+		public InterpolateQuaternion rotationInterpolation = new InterpolateQuaternion() { LerpT = 15f, Enabled = true };
 		public Quaternion rotation
 		{
 			get { return _rotation; }
@@ -77,7 +77,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		}
 		private Vector3 _spineRotation;
 		public event FieldEvent<Vector3> spineRotationChanged;
-		public InterpolateVector3 spineRotationInterpolation = new InterpolateVector3() { LerpT = 0.15f, Enabled = true };
+		public InterpolateVector3 spineRotationInterpolation = new InterpolateVector3() { LerpT = 0f, Enabled = false };
 		public Vector3 spineRotation
 		{
 			get { return _spineRotation; }
@@ -107,7 +107,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		}
 		private float _vertical;
 		public event FieldEvent<float> verticalChanged;
-		public InterpolateFloat verticalInterpolation = new InterpolateFloat() { LerpT = 0.15f, Enabled = true };
+		public InterpolateFloat verticalInterpolation = new InterpolateFloat() { LerpT = 15f, Enabled = true };
 		public float vertical
 		{
 			get { return _vertical; }
@@ -137,7 +137,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		}
 		private float _horizontal;
 		public event FieldEvent<float> horizontalChanged;
-		public InterpolateFloat horizontalInterpolation = new InterpolateFloat() { LerpT = 0.15f, Enabled = true };
+		public InterpolateFloat horizontalInterpolation = new InterpolateFloat() { LerpT = 0f, Enabled = false };
 		public float horizontal
 		{
 			get { return _horizontal; }
@@ -167,7 +167,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		}
 		private bool _isMoving;
 		public event FieldEvent<bool> isMovingChanged;
-		public Interpolated<bool> isMovingInterpolation = new Interpolated<bool>() { LerpT = 0f, Enabled = false };
+		public Interpolated<bool> isMovingInterpolation = new Interpolated<bool>() { LerpT = 15f, Enabled = true };
 		public bool isMoving
 		{
 			get { return _isMoving; }

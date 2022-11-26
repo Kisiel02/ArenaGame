@@ -1,8 +1,6 @@
+using BeardedManStudios.Forge.Networking;
 using BeardedManStudios.Forge.Networking.Generated;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 /// <summary>
 /// The component responsible for the player name and player skin and the sync of both
@@ -53,11 +51,11 @@ public class SetupPlayer : MonoBehaviour
             var playerName = PlayerPrefs.GetString("PlayerName");
             var skinIndex = PlayerPrefs.GetInt("PlayerSkinIndex");
             //call an RPC
-            np.networkObject.SendRpc(PlayerBehavior.RPC_SETUP_PLAYER, BeardedManStudios.Forge.Networking.Receivers.AllBuffered, skinIndex, playerName);
+            np.networkObject.SendRpc(PlayerBehavior.RPC_SETUP_PLAYER, Receivers.AllBuffered, skinIndex, playerName);
         }
     }
 
-    private void RPCSetupPlayer(BeardedManStudios.Forge.Networking.RpcArgs obj)
+    private void RPCSetupPlayer(RpcArgs obj)
     {
         //receive the rpc arguments
         int skinIndex = obj.GetNext<int>();
