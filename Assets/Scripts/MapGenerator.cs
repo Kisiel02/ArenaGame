@@ -48,7 +48,7 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
     public void GenerateRandomMap()
     {
-        this.seed = Random.Range(100, 10000);
+        seed = Random.Range(100, 10000);
         GenerateMap();
     }
 
