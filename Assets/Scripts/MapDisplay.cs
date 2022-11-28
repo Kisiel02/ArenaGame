@@ -10,6 +10,11 @@ public class MapDisplay : MonoBehaviour
     public MeshCollider meshCollider;
     public Texture texture;
 
+    private void Awake() {
+        //meshRenderer.material.mainTexture = texture;
+        //textureRender.material.mainTexture = texture;
+    }
+
     public void DrawTexture(Texture2D texture){
         
         textureRender.sharedMaterial.mainTexture = texture;
@@ -24,7 +29,5 @@ public class MapDisplay : MonoBehaviour
         this.texture = texture;
     }
 
-    private void Awake() {
-        meshRenderer.material.mainTexture = texture;
-    }
+    
 }
