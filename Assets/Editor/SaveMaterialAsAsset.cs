@@ -5,7 +5,7 @@ using UnityEditor;
 using System.IO;
 
 [CustomEditor(typeof(MeshRenderer))]
-public class SaveMaterialAsAsset : Editor {
+public class SaveMaterialAsAsset : UnityEditor.Editor {
     public override void OnInspectorGUI() {
         DrawDefaultInspector();
         if (GUILayout.Button("Save Material as File")) {
