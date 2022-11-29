@@ -7,6 +7,19 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 {
     public static MapGenerator Instance { get; private set; }
     
+    public float minHeight {
+        get { return  10 * meshHeightMultiplier * meshHeightCurve.Evaluate(0); }
+    }
+
+    public float maxHeight {
+        get { return 10 * meshHeightMultiplier * meshHeightCurve.Evaluate(1); }
+    }
+    public Material terrainMaterial;
+    public Color[] baseColours;
+    [Range(0,1)]
+    public float[] baseStartHeights;
+
+
     public int mapWidth;
     public int mapHeight;
     public float noiseScale;
@@ -41,6 +54,31 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
         }
     }
 
+    //--------------------------------------------------
+
+    public void UpdateMeshHeights(Material material, float minHeight, float maxHeight) {
+        material.SetFloat("minHeight", minHeight);
+        material.SetFloat("maxHeight", maxHeight);
+        material.SetColorArray("baseColours", baseColours);
+        material.SetFloatArray("baseStartHeights", baseStartHeights);
+        material.SetInt("baseColourCount", baseColours.Length);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //---------------------------------------------------
     public void GenerateRandomMap()
     {
         seed = Random.Range(100, 10000);
@@ -85,6 +123,8 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
         }else if(drawMode == DrawMode.FalloffMap) {
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(Falloff.GenerateFalloffMap(mapWidth, mapHeight)));
         }
+
+        UpdateMeshHeights(terrainMaterial, minHeight, maxHeight);
     }
 
     private void OnValidate()
