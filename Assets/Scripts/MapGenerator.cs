@@ -18,6 +18,8 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
     public Color[] baseColours;
     [Range(0,1)]
     public float[] baseStartHeights;
+    [Range(0,1)]
+    public float[] baseBlends;
 
 
     public int mapWidth;
@@ -39,6 +41,8 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
     public enum DrawMode {NoiseMap, ColourMap, Mesh, FalloffMap};
     public DrawMode drawMode;
     public AnimationCurve meshHeightCurve;
+
+    public ArenaGen arenGen;
     
     private void Awake()
     {
@@ -62,21 +66,8 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
         material.SetColorArray("baseColours", baseColours);
         material.SetFloatArray("baseStartHeights", baseStartHeights);
         material.SetInt("baseColourCount", baseColours.Length);
+        material.SetFloatArray("baseBlends", baseBlends);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //---------------------------------------------------
     public void GenerateRandomMap()
@@ -124,6 +115,7 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(Falloff.GenerateFalloffMap(mapWidth, mapHeight)));
         }
 
+        arenGen.SprawnMountains();
         UpdateMeshHeights(terrainMaterial, minHeight, maxHeight);
     }
 

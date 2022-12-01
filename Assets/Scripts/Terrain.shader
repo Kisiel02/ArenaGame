@@ -17,10 +17,12 @@ Shader "Custom/Terrain"
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
-        const static int maxColourCount = 5;
+        const static int maxColourCount = 6;
+        const static float epsilon = 1E-4;
         int baseColourCount;
         float3 baseColours[maxColourCount];
         float baseStartHeights[maxColourCount];
+        float baseBlends[maxColourCount];
 
         float minHeight;
         float maxHeight;
@@ -46,7 +48,7 @@ Shader "Custom/Terrain"
         {
             float heightPercent = inverseLerp(minHeight, maxHeight, IN.worldPos.y);
             for (int i=0; i<baseColourCount; i++){
-                float drawStrength = saturate(sign(heightPercent - baseStartHeights[i]));
+                float drawStrength = inverseLerp(-baseBlends[i]/2 - epsilon,baseBlends[i]/2, heightPercent - baseStartHeights[i]);
                 o.Albedo = o.Albedo * (1-drawStrength) + baseColours[i] * drawStrength;
             }
         }

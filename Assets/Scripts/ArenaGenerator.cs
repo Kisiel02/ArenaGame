@@ -45,7 +45,7 @@ public class ArenaGenerator : MonoBehaviour
     {
         for (int i = 0; i < spawnPlayer.transform.childCount; i++)
         {
-            Transform spawnPoint = spawnPlayer.transform.GetChild(i).transform;
+            Transform spawnPoint = spawnPlayer.transform.GetChild(i).transform; //?
             
             //Put spawn higher to detect floor
             spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y + 200f, spawnPoint.position.z);
