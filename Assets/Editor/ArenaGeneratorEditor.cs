@@ -26,6 +26,10 @@ namespace Editor
             {
                 arena.ReplaceSpawns();
             }
+
+            if (GUILayout.Button("GenerateArena")) {
+                arena.SprawnMountains();
+            }
         }
     }
 }

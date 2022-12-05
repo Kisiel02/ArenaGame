@@ -42,7 +42,6 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
     public DrawMode drawMode;
     public AnimationCurve meshHeightCurve;
 
-    public ArenaGen arenGen;
     
     private void Awake()
     {
@@ -115,7 +114,7 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(Falloff.GenerateFalloffMap(mapWidth, mapHeight)));
         }
 
-        arenGen.SprawnMountains();
+        
         UpdateMeshHeights(terrainMaterial, minHeight, maxHeight);
     }
 
