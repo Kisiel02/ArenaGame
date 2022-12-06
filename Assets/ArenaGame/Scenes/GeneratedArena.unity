@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &239190695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 924251025}
   spawnPlayer: {fileID: 2067933228}
+  structurePrefab: []
+  mountainPrefab: []
+  numberOfObjects: 0
+  radius: 20
 --- !u!4 &239190696
 Transform:
   m_ObjectHideFlags: 0
@@ -673,7 +677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &924251024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,16 +707,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7187c7d700537469cf952af7ffba60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainMaterial: {fileID: 0}
+  baseColours: []
+  baseStartHeights: []
+  baseBlends: []
   mapWidth: 150
   mapHeight: 150
   noiseScale: 25
   octaves: 5
-  persistance: 0.174
+  persistance: 0.843
   lacunarity: 3
   meshHeightMultiplier: 172.2
   seed: 1400
   offset: {x: 0, y: 0}
   autoUpdate: 1
+  useFalloff: 0
   regions:
   - name: Water
     height: 0.35
