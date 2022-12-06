@@ -42,6 +42,8 @@ public class MapCraftingManager : MonoBehaviour
 
     public void HostGameOnMap()
     {
+        
+        multiplayerMenu.DontChangeSceneOnConnect = true;
         multiplayerMenu.Host();
     }
 
