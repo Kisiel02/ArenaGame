@@ -17,6 +17,8 @@ namespace DefaultNamespace
 
                 if(normal == true) {
                 result.rotation = rotation;
+                } else {
+
                 }
                 result.position = hit.point;
             }
@@ -29,6 +31,23 @@ namespace DefaultNamespace
             Transform result = CalculatePosition(gameObject, normal);
             result.position = new Vector3(result.position.x, result.position.y + up, result.position.z);
             return result;
+        }
+
+        public static float GroundDetector(Vector3 pos) {
+
+            RaycastHit hit;
+            
+            float distance;
+
+            if (Physics.Raycast(pos, Vector3.down, out hit, 500f)) {
+                distance = hit.distance;
+
+            }else {
+                distance = -1;
+            }
+            Debug.Log(distance);
+
+                return distance;
         }
     }
 }
