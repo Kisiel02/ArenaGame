@@ -11,7 +11,7 @@ public class ArenaGenerator : MonoBehaviour {
     public GameObject[] structurePrefab;
     public GameObject[] mountainPrefab;
     public int numberOfObjects;
-    public float radius = 20f;
+    public float radius = 5f;
     private int randomNumber;
     private int randomScale;
     private int randomPrefab;
@@ -55,12 +55,13 @@ public class ArenaGenerator : MonoBehaviour {
         
         for (int i = 0; i < numberOfObjects; i++) {
             randomScale = Random.Range(20, 30);
-            randomPrefab = Random.Range(0, mountainPrefab.Length);
+            randomPrefab = Random.Range(0, mountainPrefab.Length - 1);
             float x;
             float z;
             Quaternion rot;
             float angle = i * Mathf.PI * 2 / numberOfObjects;
 
+            if(randomPrefab != 5)
             mountainPrefab[randomPrefab].transform.localScale = new Vector3(randomScale + 12, randomScale, randomScale + 12);
 
             if (i == randomNumber) {
@@ -70,8 +71,17 @@ public class ArenaGenerator : MonoBehaviour {
                 rot = Quaternion.Euler(0, angleDegrees, 0);
                 randomPrefab = 0;
 
-            } else {
-                x = (Mathf.Cos(angle) * radius);
+            } else if (i == randomNumber + 4 || i == randomNumber + 9) {
+
+                x = Mathf.Cos(angle) * radius;
+                z = Mathf.Sin(angle) * radius;
+                float angleDegrees = -angle * Mathf.Rad2Deg;
+                rot = Quaternion.Euler(0, angleDegrees - 120, 0);
+                randomPrefab = 5;
+
+            } else 
+            {
+                x = Mathf.Cos(angle) * radius;
                 z = Mathf.Sin(angle) * radius;
                 rot = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
 
@@ -80,17 +90,14 @@ public class ArenaGenerator : MonoBehaviour {
             }
 
             Vector3 pos = transform.position + new Vector3(x, 0, z);
+            
+            if(SurfaceAligner.GroundDetector(pos) < 130 && SurfaceAligner.GroundDetector(pos) > 97) {
             Instantiate(mountainPrefab[randomPrefab], pos, rot, transform);
 
-            if (i == 7 && i != randomNumber) {
-
-                x = Mathf.Cos(angle) * radius * 0.5f;
-                z = Mathf.Sin(angle) * radius * 0.5f;
-                pos = transform.position + new Vector3(x , 0, z );
-                float angleDegrees = -angle * Mathf.Rad2Deg;
-                rot = Quaternion.Euler(0, angleDegrees, 0);
-                Instantiate(structurePrefab[0], pos, rot, transform);
             }
+
+
+            
 
 
 
@@ -104,7 +111,7 @@ public class ArenaGenerator : MonoBehaviour {
         for (int i = 0; i < transform.childCount; i++) {
 
             Transform objectTransform = transform.GetChild(i).transform;
-            Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(objectTransform, 1.5f, false);
+            Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(objectTransform, -1f, false);
             objectTransform.position = newTransform.position;
             
 
