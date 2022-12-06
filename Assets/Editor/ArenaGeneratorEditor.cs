@@ -28,7 +28,7 @@ namespace Editor
             }
 
             if (GUILayout.Button("GenerateArena")) {
-                arena.SprawnMountains();
+                arena.SpawnMountains();
             }
         }
     }

@@ -36,6 +36,7 @@ public class MultiplayerMenu : MonoBehaviour
 
 	private void Start()
 	{
+		DontDestroyOnLoad(this);
         ipAddress.text = "127.0.0.1";
         portNumber.text = "15937";
 
@@ -188,6 +189,11 @@ public class MultiplayerMenu : MonoBehaviour
 		Debug.Log("Address: " + endpoint.Address + ", Port: " + endpoint.Port + ", Server? " + endpoint.IsServer);
 	}
 
+	public void CreateMap()
+	{
+		SceneManager.LoadScene("MapCrafting");
+	}
+	
 	public void Connected(NetWorker networker)
 	{
 		if (!networker.IsBound)
