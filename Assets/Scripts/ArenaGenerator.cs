@@ -52,7 +52,7 @@ public class ArenaGenerator : MonoBehaviour {
 
             //Put spawn higher to detect floor
             spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y + 200f, spawnPoint.position.z);
-            Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(spawnPoint, 2.5f, true);
+            Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(spawnPoint, 4.5f, true);
             spawnPoint.position = newTransform.position;
             spawnPoint.rotation = newTransform.rotation;
         }
