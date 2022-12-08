@@ -36,7 +36,8 @@ public class GameMode : GameModeBehavior
                     ArenaGenerator.Instance.mapGenerator.lacunarity,
                     ArenaGenerator.Instance.mapGenerator.meshHeightMultiplier,
                     ArenaGenerator.Instance.mapGenerator.offset.x,
-                    ArenaGenerator.Instance.mapGenerator.offset.y
+                    ArenaGenerator.Instance.mapGenerator.offset.y,
+                    ArenaGenerator.Instance.mapGenerator.useFalloff
                 );
             });
         };
@@ -80,8 +81,9 @@ public class GameMode : GameModeBehavior
         MapGenerator.Instance.persistance = args.GetNext<float>();
         MapGenerator.Instance.lacunarity = args.GetNext<float>();
         MapGenerator.Instance.meshHeightMultiplier = args.GetNext<float>();
-        MapGenerator.Instance.offset.x = args.GetNext<int>();
-        MapGenerator.Instance.offset.y = args.GetNext<int>();
+        MapGenerator.Instance.offset.x = args.GetNext<float>();
+        MapGenerator.Instance.offset.y = args.GetNext<float>();
+        MapGenerator.Instance.useFalloff = args.GetNext<bool>();
         MapGenerator.Instance.GenerateMap();
     }
 }

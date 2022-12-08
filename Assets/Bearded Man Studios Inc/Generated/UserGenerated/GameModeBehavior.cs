@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BeardedManStudios.Forge.Networking.Generated
 {
-	[GeneratedRPC("{\"types\":[[\"int\", \"int\", \"int\", \"float\", \"int\", \"float\", \"float\", \"float\", \"int\", \"int\", \"bool\"]]")]
+	[GeneratedRPC("{\"types\":[[\"int\", \"int\", \"int\", \"float\", \"int\", \"float\", \"float\", \"float\", \"float\", \"float\", \"bool\"]]")]
 	[GeneratedRPCVariableNames("{\"types\":[[\"seed\", \"width\", \"height\", \"scale\", \"octaves\", \"persistance\", \"lacunarity\", \"meshHeightMultiplater\", \"offsetX\", \"offsetY\", \"useFalloff\"]]")]
 	public abstract partial class GameModeBehavior : NetworkBehavior
 	{
@@ -22,7 +22,7 @@ namespace BeardedManStudios.Forge.Networking.Generated
 			networkObject.AttachedBehavior = this;
 
 			base.SetupHelperRpcs(networkObject);
-			networkObject.RegisterRpc("GenerateMap", GenerateMap, typeof(int), typeof(int), typeof(int), typeof(float), typeof(int), typeof(float), typeof(float), typeof(float), typeof(int), typeof(int), typeof(bool));
+			networkObject.RegisterRpc("GenerateMap", GenerateMap, typeof(int), typeof(int), typeof(int), typeof(float), typeof(int), typeof(float), typeof(float), typeof(float), typeof(float), typeof(float), typeof(bool));
 
 			networkObject.onDestroy += DestroyGameObject;
 
@@ -107,8 +107,8 @@ namespace BeardedManStudios.Forge.Networking.Generated
 		/// float persistance
 		/// float lacunarity
 		/// float meshHeightMultiplater
-		/// int offsetX
-		/// int offsetY
+		/// float offsetX
+		/// float offsetY
 		/// bool useFalloff
 		/// </summary>
 		public abstract void GenerateMap(RpcArgs args);
