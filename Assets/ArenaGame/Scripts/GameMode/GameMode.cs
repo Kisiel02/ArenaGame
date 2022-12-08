@@ -17,7 +17,7 @@ public class GameMode : GameModeBehavior
             return;
         }
 
-        ArenaGenerator.Instance.GenerateRandomArena();
+        ArenaGenerator.Instance.InitArena();
 
         NetworkManager.Instance.Networker.playerAccepted += (player, sender) =>
         {

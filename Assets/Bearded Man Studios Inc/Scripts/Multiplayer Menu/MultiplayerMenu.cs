@@ -36,8 +36,7 @@ public class MultiplayerMenu : MonoBehaviour
 
 	private void Start()
 	{
-		DontDestroyOnLoad(this);
-        ipAddress.text = "127.0.0.1";
+		ipAddress.text = "127.0.0.1";
         portNumber.text = "15937";
 
         for (int i = 0; i < ToggledButtons.Length; ++i)
@@ -232,7 +231,11 @@ public class MultiplayerMenu : MonoBehaviour
 		if (networker is IServer)
 		{
 			if (!DontChangeSceneOnConnect)
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+			{
+				GetComponent<Canvas>().enabled = false;
+				SceneManager.LoadScene("ArenaMap"); //.GetActiveScene().buildIndex + 1);
+			}
+				
 			else
 				NetworkObject.Flush(networker); //Called because we are already in the correct scene!
 		}

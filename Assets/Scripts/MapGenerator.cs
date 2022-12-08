@@ -62,7 +62,6 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
     }
 

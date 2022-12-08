@@ -1097,175 +1097,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 2508f6de3b7e7fa4198be0fa495e39f9, type: 3}
---- !u!1 &287050597
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 287050600}
-  - component: {fileID: 287050599}
-  m_Layer: 0
-  m_Name: MapGenerator
-  m_TagString: MapGenerator
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &287050599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287050597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7187c7d700537469cf952af7ffba60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainMaterial: {fileID: 2100000, guid: fcbfa36f08cf96544aea85ee4f30bd22, type: 2}
-  baseColours:
-  - {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 0}
-  - {r: 0.21973774, g: 0.4433962, b: 0.05186897, a: 0}
-  - {r: 0.13673544, g: 0.2264151, b: 0.03716624, a: 0}
-  - {r: 0.18867922, g: 0.11362067, b: 0.06835171, a: 0}
-  - {r: 1, g: 1, b: 1, a: 0}
-  baseStartHeights:
-  - 0
-  - 0.094
-  - 0.187
-  - 0.264
-  - 0.415
-  baseBlends:
-  - 0.172
-  - 0.005
-  - 0.059
-  - 0.03
-  - 0.023
-  mapWidth: 150
-  mapHeight: 150
-  noiseScale: 28.92
-  octaves: 4
-  persistance: 0.232
-  lacunarity: 2
-  meshHeightMultiplier: 30.1
-  seed: 5182
-  offset: {x: 62.9, y: -9.6}
-  autoUpdate: 1
-  useFalloff: 0
-  regions:
-  - name: Water
-    height: 0.25
-    colour: {r: 0.046706967, g: 0.3065964, b: 0.7735849, a: 0}
-  - name: Land
-    height: 0.6
-    colour: {r: 0.26502192, g: 0.5283019, b: 0.05183338, a: 1}
-  - name: Land 2
-    height: 0.7
-    colour: {r: 0.10430613, g: 0.41509432, b: 0.028978268, a: 1}
-  - name: Mountains
-    height: 0.9
-    colour: {r: 0.31132078, g: 0.25799346, b: 0.23907086, a: 1}
-  - name: Mountains2
-    height: 1
-    colour: {r: 1, g: 1, b: 1, a: 1}
-  drawMode: 2
-  meshHeightCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.19916916
-      value: 0.0041994005
-      inSlope: 0.040087152
-      outSlope: 0.040087152
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.618127
-    - serializedVersion: 3
-      time: 0.21906596
-      value: 0.19481343
-      inSlope: 0.4020146
-      outSlope: 0.4020146
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.3826933
-    - serializedVersion: 3
-      time: 0.4433712
-      value: 0.2769494
-      inSlope: 0.2679244
-      outSlope: 0.2679244
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.2865921
-    - serializedVersion: 3
-      time: 0.6154217
-      value: 0.41392633
-      inSlope: 0.38265356
-      outSlope: 0.38265356
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.7431433
-      value: 0.6510435
-      inSlope: 1.1122813
-      outSlope: 1.1122813
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.17107187
-      outWeight: 0.41141793
-    - serializedVersion: 3
-      time: 0.99244857
-      value: 1.0355452
-      inSlope: 2.1446035
-      outSlope: 2.1446035
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.25145602
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0007935
-      value: 1.0682755
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &287050600
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287050597}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 140, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &291119203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3553,62 +3384,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 832078771}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &850024564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 850024566}
-  - component: {fileID: 850024565}
-  m_Layer: 0
-  m_Name: ArenaGenerator
-  m_TagString: ArenaGenerator
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &850024565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850024564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d5c9c4cdfc471041b3c5715aaeec197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapGenerator: {fileID: 287050599}
-  spawnPlayer: {fileID: 0}
-  structurePrefab:
-  - {fileID: 2439121733578381080, guid: 53ead465c1fc0a2409a7c2bb25ecc59c, type: 3}
-  mountainPrefab:
-  - {fileID: 2163485048200740926, guid: e67d79c86f48359418f4f6f534756921, type: 3}
-  - {fileID: 3661628760712438309, guid: d9a8514f883820b4bac3471e017ef8d5, type: 3}
-  - {fileID: 5837822993767371175, guid: 4093e42cf518edc4eafedc5ce2f09789, type: 3}
-  - {fileID: 384565857296377633, guid: 0efd545f318b68b44a561af3893cb17e, type: 3}
-  - {fileID: 8030670839601526102, guid: 43f34826d2f13234fa8da6e2623f4329, type: 3}
-  numberOfObjects: 12
-  radius: 100
---- !u!4 &850024566
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850024564}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 149.4, z: 55.800003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &909853180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4926,6 +4701,57 @@ SkinnedMeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1720174701}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1319357132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319357134}
+  - component: {fileID: 1319357133}
+  m_Layer: 0
+  m_Name: GenerationParametersss
+  m_TagString: GenerationParameters
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1319357133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319357132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1887662c2ad5c444a583c43f59ec773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useParams: 0
+  seed: 0
+  octaves: 0
+  lacunarity: 0
+  scale: 0
+  persistance: 0
+  falloff: 0
+--- !u!4 &1319357134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319357132}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 149.4, z: 55.800003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1319474864
 PrefabInstance:
   m_ObjectHideFlags: 0

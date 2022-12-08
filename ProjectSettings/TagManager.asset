@@ -10,6 +10,8 @@ TagManager:
   - ArenaGenerator
   - MapGenerator
   - MultiplayerMenu
+  - SpawnPlayer
+  - GenerationParameters
   layers:
   - Default
   - TransparentFX

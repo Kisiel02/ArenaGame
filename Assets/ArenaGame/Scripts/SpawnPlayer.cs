@@ -1,6 +1,5 @@
-using BeardedManStudios.Forge.Networking.Unity;
-using System.Collections;
 using System.Collections.Generic;
+using BeardedManStudios.Forge.Networking.Unity;
 using UnityEngine;
 
 /// <summary>
@@ -21,7 +20,7 @@ public class SpawnPlayer : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
         //Find a random spawnpoint from the list
-        Vector3 randomSpawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
+        Vector3 randomSpawnPosition = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         //Instantiate the player
         NetworkManager.Instance.InstantiatePlayer(position: randomSpawnPosition);
     }

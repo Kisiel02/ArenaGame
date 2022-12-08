@@ -1,16 +1,15 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MapCraftingManager : MonoBehaviour
 {
-    //[SerializeField]
-    private ArenaGenerator arenaGenerator;
+    [SerializeField] private ArenaGenerator arenaGenerator;
 
-    //[SerializeField]
-    private MapGenerator mapGenerator;
+    [SerializeField] private MapGenerator mapGenerator;
 
     [SerializeField] private Slider octavesSlider;
 
@@ -21,30 +20,37 @@ public class MapCraftingManager : MonoBehaviour
     [SerializeField] private Slider persistanceSlider;
 
     [SerializeField] private Toggle falloffToggle;
-
-    [SerializeField] private MultiplayerMenu multiplayerMenu;
-
-
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        multiplayerMenu = GameObject.FindWithTag("MultiplayerMenu").GetComponent<MultiplayerMenu>();
-        GameObject.FindWithTag("MultiplayerMenu").GetComponent<Canvas>().enabled = false;
-        arenaGenerator = GameObject.FindWithTag("ArenaGenerator").GetComponent<ArenaGenerator>();
-        mapGenerator = GameObject.FindWithTag("MapGenerator").GetComponent<MapGenerator>();
         arenaGenerator.GenerateRandomArena();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void UseThisMap()
     {
+        PrepareGenerationParams();
+        SceneManager.LoadScene("MainMenu");
     }
 
-    public void HostGameOnMap()
+    public void DiscardMap()
     {
-        
-        multiplayerMenu.DontChangeSceneOnConnect = true;
-        multiplayerMenu.Host();
+        GameObject.FindWithTag("GenerationParameters").GetComponent<GenerationParameters>().useParams = false;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private void PrepareGenerationParams()
+    {
+        GenerationParameters generationParameters = GameObject.FindWithTag("GenerationParameters")
+            .GetComponent<GenerationParameters>();
+
+        generationParameters.seed = mapGenerator.seed;
+        generationParameters.useParams = true;
+        generationParameters.octaves = (int)octavesSlider.value;
+        generationParameters.lacunarity = lacunaritySlider.value;
+        generationParameters.scale = scaleSlider.value;
+        generationParameters.persistance = persistanceSlider.value;
+        generationParameters.falloff = falloffToggle.isOn;
     }
 
     public void RestoreDefaults()
