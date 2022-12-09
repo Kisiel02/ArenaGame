@@ -56,9 +56,9 @@ public class MapCraftingManager : MonoBehaviour
     public void RestoreDefaults()
     {
         octavesSlider.value = 5.0f;
-        lacunaritySlider.value = 5.0f;
+        lacunaritySlider.value = 2.0f;
         scaleSlider.value = 30.0f;
-        persistanceSlider.value = 0.2f;
+        persistanceSlider.value = 0.3f;
         falloffToggle.isOn = true;
     }
 

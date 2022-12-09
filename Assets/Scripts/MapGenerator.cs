@@ -18,16 +18,16 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
     public Material terrainMaterial;
     public Color[] baseColours;
-    [Range(0, 1)] public float[] baseStartHeights;
-    [Range(0, 1)] public float[] baseBlends;
+    [Range(0, 0.1f)] public float[] baseStartHeights;
+    [Range(0, 0.1f)] public float[] baseBlends;
 
 
     public int mapWidth;
     public int mapHeight;
     public float noiseScale;
     public int octaves;
-    [Range(0, 1)] public float persistance;
-    public float lacunarity;
+    [Range(0, 1)] public float persistance = 0.3f;
+    public float lacunarity = 2.0f;
 
     public float meshHeightMultiplier;
     public int seed;
