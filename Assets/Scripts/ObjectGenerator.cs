@@ -50,6 +50,7 @@ public class ObjectGenerator : MonoBehaviour
 
     private void ReplaceObjectWithTag(String tag)
     {
+        Debug.Log("Replace " + tag);
         Transform spawnWeapon = GameObject.FindWithTag(tag).transform;
 
         foreach (Transform child in spawnWeapon)

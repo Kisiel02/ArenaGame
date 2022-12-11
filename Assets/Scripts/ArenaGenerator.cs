@@ -7,9 +7,7 @@ public class ArenaGenerator : MonoBehaviour
     public static ArenaGenerator Instance { get; private set; }
 
     public MapGenerator mapGenerator;
-
-    public SpawnPlayer spawnPlayer;
-
+    
     public ObjectGenerator objectGenerator;
 
     private void Awake()
@@ -21,6 +19,7 @@ public class ArenaGenerator : MonoBehaviour
         else
         {
             Instance = this;
+            AttachDependencies();
         }
     }
 
@@ -33,31 +32,31 @@ public class ArenaGenerator : MonoBehaviour
 
             if (generationParameters.useParams)
             {
-                CopyGenerationParameters(generationParameters);
-                GenerateArena();
+               GenerateArenaFromParams();
+               generationParameters.useParams = false;
             }
             else
             {
                 GenerateRandomArena();
             }
-
-            Destroy(generationParameters);
         }
         catch (NullReferenceException ex)
         {
             GenerateRandomArena();
         }
     }
-
-    private void AttachDependencies()
+    
+    public void GenerateArenaFromParams()
     {
-        spawnPlayer = GameObject.Find("SpawnPlayer").GetComponent<SpawnPlayer>();
-        mapGenerator = GetComponent<MapGenerator>();
+        GenerationParameters generationParameters = GameObject.FindWithTag("GenerationParameters")
+            .GetComponent<GenerationParameters>();
+        
+        CopyGenerationParameters(generationParameters);
+        GenerateArena();
     }
 
     public void GenerateRandomArena()
     {
-        AttachDependencies();
         mapGenerator.GenerateRandomMap();
         objectGenerator.GenerateObjects(mapGenerator.seed);
     }
@@ -73,26 +72,15 @@ public class ArenaGenerator : MonoBehaviour
     }
 
 
-    public void GenerateArena()
+    private void GenerateArena()
     {
-        spawnPlayer = GameObject.Find("SpawnPlayer").GetComponent<SpawnPlayer>();
         mapGenerator.GenerateMap();
-        //ReplaceSpawns();
         objectGenerator.GenerateObjects(mapGenerator.seed);
     }
-
-    // public void ReplaceSpawns()
-    // {
-    //     for (int i = 0; i < spawnPlayer.transform.childCount; i++)
-    //     {
-    //         Transform spawnPoint = spawnPlayer.transform.GetChild(i).transform;
-    //
-    //         //Put spawn higher to detect floor
-    //         spawnPoint.position =
-    //             new Vector3(spawnPoint.position.x, spawnPoint.position.y + 200f, spawnPoint.position.z);
-    //         Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(spawnPoint, 4.5f, true);
-    //         spawnPoint.position = newTransform.position;
-    //         spawnPoint.rotation = newTransform.rotation;
-    //     }
-    // }
+    
+    private void AttachDependencies()
+    {
+        mapGenerator = GetComponent<MapGenerator>();
+        objectGenerator = GetComponent<ObjectGenerator>();
+    }
 }

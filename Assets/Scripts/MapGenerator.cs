@@ -80,7 +80,7 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
     //---------------------------------------------------
     public void GenerateRandomMap()
     {
-        seed = Random.Range(100, 10000);
+        seed = Random.Range(100000, 999999);
         GenerateMap();
     }
 
