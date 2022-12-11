@@ -1,7 +1,8 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ObjectGenerator : MonoBehaviour
 {
@@ -19,48 +20,72 @@ public class ObjectGenerator : MonoBehaviour
 
     [SerializeField] private float minimalY = 3.0f;
 
-    public void RemoveObjects()
-    {
-        foreach (Transform child in mesh.transform)
-        {
-            DestroyImmediate(child.gameObject);
-        }
-    }
-
     public void GenerateObjects(int seed)
     {
         Random.InitState(seed);
         PlaceWeapons();
+        PlaceSpawnPoints();
         RemoveObjects();
         PlaceObjects();
     }
 
-    public void PlaceWeapons()
+    private void RemoveObjects()
     {
-        Transform SpawnWeapon = GameObject.FindWithTag("SpawnWeapon").transform;
-        
-        foreach (Transform child in SpawnWeapon)
+        while (mesh.transform.childCount > 0)
         {
-            bool placed = false;
-
-            while (!placed)
-            {
-                int x = Random.Range(-maxX, maxX);
-                int z = Random.Range(-maxZ, maxZ);
-
-                Vector3 newPos = new Vector3(x, y, z);
-                
-                RaycastHit hit;
-                if (Physics.Raycast(newPos, Vector3.down, out hit, y + 10.0f) && hit.point.y >= minimalY)
-                {
-                    Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(child, 0f, true);
-                    child.transform.position = newTransform.position;
-                    placed = true;
-                }
-            }
+            DestroyImmediate(mesh.transform.GetChild(0).gameObject);
         }
+    }
 
-        
+    private void PlaceWeapons()
+    {
+        ReplaceObjectWithTag("SpawnWeapon");
+    }
+
+    private void PlaceSpawnPoints()
+    {
+        ReplaceObjectWithTag("SpawnPlayer");
+    }
+
+
+    private void ReplaceObjectWithTag(String tag)
+    {
+        Transform spawnWeapon = GameObject.FindWithTag(tag).transform;
+
+        foreach (Transform child in spawnWeapon)
+        {
+            PlaceObject(child);
+        }
+    }
+
+    private void PlaceObject(Transform objectToBePlaced)
+    {
+        bool placed = false;
+
+        int count = 0;
+        while (!placed)
+        {
+            if (count > 100) placed = true; //Safety check
+
+            var newPos = RandomiseNewPosition();
+
+            if (newPos.y >= minimalY)
+            {
+                objectToBePlaced.transform.position = newPos;
+                placed = true;
+            }
+
+            count++;
+        }
+    }
+
+    private Vector3 RandomiseNewPosition()
+    {
+        int x = Random.Range(-maxX, maxX);
+        int z = Random.Range(-maxZ, maxZ);
+        Vector3 newPos = new Vector3(x, y, z);
+        newPos = SurfaceAligner.CalculatePosition(newPos);
+        return newPos;
     }
 
     private void PlaceObjects()
@@ -69,17 +94,12 @@ public class ObjectGenerator : MonoBehaviour
 
         while (objectsSpawned != ObjectCount)
         {
-            int x = Random.Range(-maxX, maxX);
-            int z = Random.Range(-maxZ, maxZ);
+            Vector3 newPos = RandomiseNewPosition();
+            GameObject pickedPrefab = objectToSpawn[Random.Range(0, objectToSpawn.Count - 1)];
 
-            GameObject choosen = objectToSpawn[Random.Range(0, objectToSpawn.Count - 1)];
-
-            Vector3 newPos = new Vector3(x, y, z);
-
-            RaycastHit hit;
-            if (Physics.Raycast(newPos, Vector3.down, out hit, y + 10.0f) && hit.point.y >= minimalY)
+            if (newPos.y >= minimalY)
             {
-                var spawned = Instantiate(choosen, hit.point, Quaternion.identity);
+                var spawned = Instantiate(pickedPrefab, newPos, Quaternion.identity);
                 spawned.transform.parent = mesh.transform;
                 objectsSpawned++;
             }

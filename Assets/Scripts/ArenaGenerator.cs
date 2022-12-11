@@ -14,8 +14,6 @@ public class ArenaGenerator : MonoBehaviour
 
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -35,7 +33,7 @@ public class ArenaGenerator : MonoBehaviour
 
             if (generationParameters.useParams)
             {
-                copyGenerationParameters(generationParameters);
+                CopyGenerationParameters(generationParameters);
                 GenerateArena();
             }
             else
@@ -51,7 +49,20 @@ public class ArenaGenerator : MonoBehaviour
         }
     }
 
-    private void copyGenerationParameters(GenerationParameters generationParameters)
+    private void AttachDependencies()
+    {
+        spawnPlayer = GameObject.Find("SpawnPlayer").GetComponent<SpawnPlayer>();
+        mapGenerator = GetComponent<MapGenerator>();
+    }
+
+    public void GenerateRandomArena()
+    {
+        AttachDependencies();
+        mapGenerator.GenerateRandomMap();
+        objectGenerator.GenerateObjects(mapGenerator.seed);
+    }
+
+    private void CopyGenerationParameters(GenerationParameters generationParameters)
     {
         mapGenerator.seed = generationParameters.seed;
         mapGenerator.lacunarity = generationParameters.lacunarity;
@@ -61,34 +72,27 @@ public class ArenaGenerator : MonoBehaviour
         mapGenerator.noiseScale = generationParameters.scale;
     }
 
-    public void GenerateRandomArena()
-    {
-        spawnPlayer = GameObject.Find("SpawnPlayer").GetComponent<SpawnPlayer>();
-        mapGenerator.GenerateRandomMap();
-        ReplaceSpawns();
-        objectGenerator.GenerateObjects(mapGenerator.seed);
-    }
 
     public void GenerateArena()
     {
         spawnPlayer = GameObject.Find("SpawnPlayer").GetComponent<SpawnPlayer>();
         mapGenerator.GenerateMap();
-        ReplaceSpawns();
+        //ReplaceSpawns();
         objectGenerator.GenerateObjects(mapGenerator.seed);
     }
 
-    public void ReplaceSpawns()
-    {
-        for (int i = 0; i < spawnPlayer.transform.childCount; i++)
-        {
-            Transform spawnPoint = spawnPlayer.transform.GetChild(i).transform;
-
-            //Put spawn higher to detect floor
-            spawnPoint.position =
-                new Vector3(spawnPoint.position.x, spawnPoint.position.y + 200f, spawnPoint.position.z);
-            Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(spawnPoint, 4.5f, true);
-            spawnPoint.position = newTransform.position;
-            spawnPoint.rotation = newTransform.rotation;
-        }
-    }
+    // public void ReplaceSpawns()
+    // {
+    //     for (int i = 0; i < spawnPlayer.transform.childCount; i++)
+    //     {
+    //         Transform spawnPoint = spawnPlayer.transform.GetChild(i).transform;
+    //
+    //         //Put spawn higher to detect floor
+    //         spawnPoint.position =
+    //             new Vector3(spawnPoint.position.x, spawnPoint.position.y + 200f, spawnPoint.position.z);
+    //         Transform newTransform = SurfaceAligner.CalculatePositionAndAddHeight(spawnPoint, 4.5f, true);
+    //         spawnPoint.position = newTransform.position;
+    //         spawnPoint.rotation = newTransform.rotation;
+    //     }
+    // }
 }

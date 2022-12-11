@@ -22,10 +22,10 @@ namespace Editor
                 arena.GenerateRandomArena();
             }
             
-            if (GUILayout.Button("Spawnpoints"))
-            {
-                arena.ReplaceSpawns();
-            }
+            // if (GUILayout.Button("Spawnpoints"))
+            // {
+            //     arena.ReplaceSpawns();
+            // }
         }
     }
 }
