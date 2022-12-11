@@ -60,6 +60,12 @@ public class ArenaGenerator : MonoBehaviour
         mapGenerator.GenerateRandomMap();
         objectGenerator.GenerateObjects(mapGenerator.seed);
     }
+    
+    public void GenerateArena()
+    {
+        mapGenerator.GenerateMap();
+        objectGenerator.GenerateObjects(mapGenerator.seed);
+    }
 
     private void CopyGenerationParameters(GenerationParameters generationParameters)
     {
@@ -69,13 +75,6 @@ public class ArenaGenerator : MonoBehaviour
         mapGenerator.persistance = generationParameters.persistance;
         mapGenerator.useFalloff = generationParameters.falloff;
         mapGenerator.noiseScale = generationParameters.scale;
-    }
-
-
-    private void GenerateArena()
-    {
-        mapGenerator.GenerateMap();
-        objectGenerator.GenerateObjects(mapGenerator.seed);
     }
     
     private void AttachDependencies()
