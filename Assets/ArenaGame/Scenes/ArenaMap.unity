@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &23970484
 Transform:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &87351958
 Transform:
   m_ObjectHideFlags: 0
@@ -791,6 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -846,6 +850,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
@@ -946,6 +954,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
@@ -1535,7 +1547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &573236992
 Transform:
   m_ObjectHideFlags: 0
@@ -1626,6 +1638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1681,6 +1697,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
@@ -1948,6 +1968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2087,6 +2111,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
@@ -2234,7 +2262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &871534222
 Transform:
   m_ObjectHideFlags: 0
@@ -2549,6 +2577,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
@@ -3279,7 +3311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1292025318
 Transform:
   m_ObjectHideFlags: 0
@@ -3851,6 +3883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4022,6 +4058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4077,6 +4117,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
@@ -4257,7 +4301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1789116635
 Transform:
   m_ObjectHideFlags: 0
@@ -4380,6 +4424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (09)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4443,7 +4491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1885138816
 Transform:
   m_ObjectHideFlags: 0
@@ -4533,6 +4581,10 @@ PrefabInstance:
     - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_Name
       value: DummyWeaponPickupSpawner (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442921462026966, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680569896986378, guid: 6b15ebe609ecc0a46a44e8b08475a0cc, type: 3}
       propertyPath: m_RootOrder

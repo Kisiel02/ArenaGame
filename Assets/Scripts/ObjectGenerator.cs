@@ -23,10 +23,10 @@ public class ObjectGenerator : MonoBehaviour
     public void GenerateObjects(int seed)
     {
         Random.InitState(seed);
+        RemoveObjects();
         PlaceWeapons();
         PlaceSpawnPoints();
-        RemoveObjects();
-        PlaceObjects();
+        GenerateObjects();
     }
 
     private void RemoveObjects()
@@ -39,44 +39,39 @@ public class ObjectGenerator : MonoBehaviour
 
     private void PlaceWeapons()
     {
-        ReplaceObjectWithTag("SpawnWeapon");
+        ReplaceObjectWithTag("SpawnWeapon", 1.0f);
+        MakeChildrenActiveByTag("SpawnWeapon");
     }
-
+    
     private void PlaceSpawnPoints()
     {
-        ReplaceObjectWithTag("SpawnPlayer");
+        ReplaceObjectWithTag("SpawnPlayer", 2.0f);
     }
 
 
-    private void ReplaceObjectWithTag(String tag)
+    private void ReplaceObjectWithTag(String tag, float raiseValue)
     {
-        Debug.Log("Replace " + tag);
-        Transform spawnWeapon = GameObject.FindWithTag(tag).transform;
+        Transform transform = GameObject.FindWithTag(tag).transform;
 
-        foreach (Transform child in spawnWeapon)
+        foreach (Transform child in transform)
         {
-            PlaceObject(child);
+            PlaceObject(child, raiseValue);
         }
     }
 
-    private void PlaceObject(Transform objectToBePlaced)
+    private void PlaceObject(Transform objectToBePlaced, float raiseValue)
     {
         bool placed = false;
 
-        int count = 0;
         while (!placed)
         {
-            if (count > 100) placed = true; //Safety check
-
             var newPos = RandomiseNewPosition();
-
             if (newPos.y >= minimalY)
             {
+                newPos.y += raiseValue;
                 objectToBePlaced.transform.position = newPos;
                 placed = true;
             }
-
-            count++;
         }
     }
 
@@ -89,7 +84,7 @@ public class ObjectGenerator : MonoBehaviour
         return newPos;
     }
 
-    private void PlaceObjects()
+    private void GenerateObjects()
     {
         int objectsSpawned = 0;
 
@@ -104,6 +99,16 @@ public class ObjectGenerator : MonoBehaviour
                 spawned.transform.parent = mesh.transform;
                 objectsSpawned++;
             }
+        }
+    }
+    
+    private void MakeChildrenActiveByTag(String tag)
+    {
+        Transform transform = GameObject.FindWithTag(tag).transform;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
         }
     }
 }

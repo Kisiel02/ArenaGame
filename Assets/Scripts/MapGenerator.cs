@@ -2,10 +2,8 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
+public class MapGenerator : MonoBehaviour
 {
-    public static MapGenerator Instance { get; private set; }
-
     public float minHeight
     {
         get { return 10 * meshHeightMultiplier * meshHeightCurve.Evaluate(0); }
@@ -49,35 +47,8 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
     public DrawMode drawMode;
     public AnimationCurve meshHeightCurve;
+    
 
-
-    private void Awake()
-    {
-        // If there is an instance, and it's not me, delete myself.
-
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    //--------------------------------------------------
-
-    public void UpdateMeshHeights(Material material, float minHeight, float maxHeight)
-    {
-        material.SetFloat("minHeight", minHeight);
-        material.SetFloat("maxHeight", maxHeight);
-        material.SetColorArray("baseColours", baseColours);
-        material.SetFloatArray("baseStartHeights", baseStartHeights);
-        material.SetInt("baseColourCount", baseColours.Length);
-        material.SetFloatArray("baseBlends", baseBlends);
-    }
-
-    //---------------------------------------------------
     public void GenerateRandomMap()
     {
         seed = Random.Range(100000, 999999);
@@ -164,6 +135,20 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
         falloffMap = Falloff.GenerateFalloffMap(mapWidth, mapHeight);
     }
+    
+    //--------------------------------------------------
+
+    private void UpdateMeshHeights(Material material, float minHeight, float maxHeight)
+    {
+        material.SetFloat("minHeight", minHeight);
+        material.SetFloat("maxHeight", maxHeight);
+        material.SetColorArray("baseColours", baseColours);
+        material.SetFloatArray("baseStartHeights", baseStartHeights);
+        material.SetInt("baseColourCount", baseColours.Length);
+        material.SetFloatArray("baseBlends", baseBlends);
+    }
+
+    //---------------------------------------------------
 }
 
 [Serializable]

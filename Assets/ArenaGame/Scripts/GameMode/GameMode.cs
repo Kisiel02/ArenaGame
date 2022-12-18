@@ -23,9 +23,6 @@ public class GameMode : GameModeBehavior
         {
             MainThreadManager.Run(() =>
             {
-                //Do some counting logic here for a gamemode, eg, assign team to newly joined player, or restart round if enough people joined
-                //Remember to remove players from counter in playerDisconnected event as well
-
                 networkObject.SendRpc(player, RPC_GENERATE_MAP,
                     ArenaGenerator.Instance.mapGenerator.seed,
                     ArenaGenerator.Instance.mapGenerator.mapWidth,

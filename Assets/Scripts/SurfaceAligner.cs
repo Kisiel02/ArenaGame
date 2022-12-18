@@ -4,7 +4,6 @@ namespace DefaultNamespace
 {
     public class SurfaceAligner
     {
-        
         public static Vector3 CalculatePosition(Vector3 position)
         {
             RaycastHit hit;
@@ -16,19 +15,20 @@ namespace DefaultNamespace
 
             return position;
         }
-        
-        public static Transform CalculatePosition(Transform gameObject, bool rotateObject)
+
+        private static Transform CalculatePosition(Transform gameObject, bool rotateObject)
         {
             RaycastHit hit;
             Transform result = gameObject;
 
-            if (Physics.Raycast(gameObject.position, Vector3.down, out hit, 500f) && hit.transform.tag == "Mesh")
+            if (Physics.Raycast(gameObject.position, Vector3.down, out hit, 500f)
+                && hit.transform.tag == "Mesh")
             {
                 if (rotateObject == true)
                 {
                     result.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
-                
+
                 result.position = hit.point;
             }
 
