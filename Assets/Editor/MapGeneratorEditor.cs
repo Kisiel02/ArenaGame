@@ -22,7 +22,5 @@ public class MapGeneratorEditor : UnityEditor.Editor
             mapGen.GenerateMap();
         }
 
-
-
     }
 }

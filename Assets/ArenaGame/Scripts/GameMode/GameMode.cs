@@ -23,9 +23,6 @@ public class GameMode : GameModeBehavior
         {
             MainThreadManager.Run(() =>
             {
-                //Do some counting logic here for a gamemode, eg, assign team to newly joined player, or restart round if enough people joined
-                //Remember to remove players from counter in playerDisconnected event as well
-
                 networkObject.SendRpc(player, RPC_GENERATE_MAP,
                     ArenaGenerator.Instance.mapGenerator.seed,
                     ArenaGenerator.Instance.mapGenerator.mapWidth,
@@ -73,17 +70,17 @@ public class GameMode : GameModeBehavior
 
     public override void GenerateMap(RpcArgs args)
     {
-        MapGenerator.Instance.seed = args.GetNext<int>();
-        MapGenerator.Instance.mapWidth = args.GetNext<int>();
-        MapGenerator.Instance.mapHeight = args.GetNext<int>();
-        MapGenerator.Instance.noiseScale = args.GetNext<float>();
-        MapGenerator.Instance.octaves = args.GetNext<int>();
-        MapGenerator.Instance.persistance = args.GetNext<float>();
-        MapGenerator.Instance.lacunarity = args.GetNext<float>();
-        MapGenerator.Instance.meshHeightMultiplier = args.GetNext<float>();
-        MapGenerator.Instance.offset.x = args.GetNext<float>();
-        MapGenerator.Instance.offset.y = args.GetNext<float>();
-        MapGenerator.Instance.useFalloff = args.GetNext<bool>();
-        MapGenerator.Instance.GenerateMap();
+        ArenaGenerator.Instance.mapGenerator.seed = args.GetNext<int>();
+        ArenaGenerator.Instance.mapGenerator.mapWidth = args.GetNext<int>();
+        ArenaGenerator.Instance.mapGenerator.mapHeight = args.GetNext<int>();
+        ArenaGenerator.Instance.mapGenerator.noiseScale = args.GetNext<float>();
+        ArenaGenerator.Instance.mapGenerator.octaves = args.GetNext<int>();
+        ArenaGenerator.Instance.mapGenerator.persistance = args.GetNext<float>();
+        ArenaGenerator.Instance.mapGenerator.lacunarity = args.GetNext<float>();
+        ArenaGenerator.Instance.mapGenerator.meshHeightMultiplier = args.GetNext<float>();
+        ArenaGenerator.Instance.mapGenerator.offset.x = args.GetNext<float>();
+        ArenaGenerator.Instance.mapGenerator.offset.y = args.GetNext<float>();
+        ArenaGenerator.Instance.mapGenerator.useFalloff = args.GetNext<bool>();
+        ArenaGenerator.Instance.GenerateArena();
     }
 }

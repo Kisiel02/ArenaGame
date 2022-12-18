@@ -12,6 +12,8 @@ TagManager:
   - MultiplayerMenu
   - SpawnPlayer
   - GenerationParameters
+  - Mesh
+  - SpawnWeapon
   layers:
   - Default
   - TransparentFX

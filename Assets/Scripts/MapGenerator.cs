@@ -2,10 +2,8 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
+public class MapGenerator : MonoBehaviour
 {
-    public static MapGenerator Instance { get; private set; }
-
     public float minHeight
     {
         get { return 10 * meshHeightMultiplier * meshHeightCurve.Evaluate(0); }
@@ -18,16 +16,16 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
     public Material terrainMaterial;
     public Color[] baseColours;
-    [Range(0, 1)] public float[] baseStartHeights;
-    [Range(0, 1)] public float[] baseBlends;
+    [Range(0, 0.1f)] public float[] baseStartHeights;
+    [Range(0, 0.1f)] public float[] baseBlends;
 
 
     public int mapWidth;
     public int mapHeight;
     public float noiseScale;
     public int octaves;
-    [Range(0, 1)] public float persistance;
-    public float lacunarity;
+    [Range(0, 1)] public float persistance = 0.3f;
+    public float lacunarity = 2.0f;
 
     public float meshHeightMultiplier;
     public int seed;
@@ -49,38 +47,11 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
     public DrawMode drawMode;
     public AnimationCurve meshHeightCurve;
+    
 
-
-    private void Awake()
-    {
-        // If there is an instance, and it's not me, delete myself.
-
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    //--------------------------------------------------
-
-    public void UpdateMeshHeights(Material material, float minHeight, float maxHeight)
-    {
-        material.SetFloat("minHeight", minHeight);
-        material.SetFloat("maxHeight", maxHeight);
-        material.SetColorArray("baseColours", baseColours);
-        material.SetFloatArray("baseStartHeights", baseStartHeights);
-        material.SetInt("baseColourCount", baseColours.Length);
-        material.SetFloatArray("baseBlends", baseBlends);
-    }
-
-    //---------------------------------------------------
     public void GenerateRandomMap()
     {
-        seed = Random.Range(100, 10000);
+        seed = Random.Range(100000, 999999);
         GenerateMap();
     }
 
@@ -164,6 +135,20 @@ public class MapGenerator : MonoBehaviour //MapGeneratorBehavior
 
         falloffMap = Falloff.GenerateFalloffMap(mapWidth, mapHeight);
     }
+    
+    //--------------------------------------------------
+
+    private void UpdateMeshHeights(Material material, float minHeight, float maxHeight)
+    {
+        material.SetFloat("minHeight", minHeight);
+        material.SetFloat("maxHeight", maxHeight);
+        material.SetColorArray("baseColours", baseColours);
+        material.SetFloatArray("baseStartHeights", baseStartHeights);
+        material.SetInt("baseColourCount", baseColours.Length);
+        material.SetFloatArray("baseBlends", baseBlends);
+    }
+
+    //---------------------------------------------------
 }
 
 [Serializable]

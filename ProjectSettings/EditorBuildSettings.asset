@@ -14,13 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ArenaGame/Scenes/MapCrafting.unity
     guid: 8918f9e5010688246b4028549b8991e5
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: e22f1f5acb47eec4b82cb3e2bccaacb8
-  - enabled: 0
+  - enabled: 1
     path: Assets/ArenaGame/Scenes/ArenaScene.unity
     guid: 80227f7977b88964ca3ab773b7e508d9
   m_configObjects: {}

@@ -1,16 +1,12 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class MapCraftingManager : MonoBehaviour
 {
     [SerializeField] private ArenaGenerator arenaGenerator;
-
-    [SerializeField] private MapGenerator mapGenerator;
-
+    
     [SerializeField] private Slider octavesSlider;
 
     [SerializeField] private Slider lacunaritySlider;
@@ -21,10 +17,15 @@ public class MapCraftingManager : MonoBehaviour
 
     [SerializeField] private Toggle falloffToggle;
     
-    // Start is called before the first frame update
+    [SerializeField] private GenerationParameters generationParameters;
+    
+    [SerializeField] private TMP_InputField seedInputField;
+    
     void Awake()
     {
-        arenaGenerator.GenerateRandomArena();
+        OnRandomSeedButtonClicked();
+        PrepareGenerationParams();
+        arenaGenerator.GenerateArenaFromParams();
     }
     
     public void UseThisMap()
@@ -44,8 +45,8 @@ public class MapCraftingManager : MonoBehaviour
         GenerationParameters generationParameters = GameObject.FindWithTag("GenerationParameters")
             .GetComponent<GenerationParameters>();
 
-        generationParameters.seed = mapGenerator.seed;
         generationParameters.useParams = true;
+        generationParameters.seed = int.Parse(seedInputField.text);
         generationParameters.octaves = (int)octavesSlider.value;
         generationParameters.lacunarity = lacunaritySlider.value;
         generationParameters.scale = scaleSlider.value;
@@ -56,59 +57,59 @@ public class MapCraftingManager : MonoBehaviour
     public void RestoreDefaults()
     {
         octavesSlider.value = 5.0f;
-        lacunaritySlider.value = 5.0f;
+        lacunaritySlider.value = 2.0f;
         scaleSlider.value = 30.0f;
-        persistanceSlider.value = 0.2f;
+        persistanceSlider.value = 0.3f;
         falloffToggle.isOn = true;
     }
 
-    public void OnSeedInputEnd(TMP_InputField seedInputField)
+    public void OnSeedInputEnd()
     {
         int seed = int.Parse(seedInputField.text);
-        mapGenerator.seed = seed;
-        arenaGenerator.GenerateArena();
+        generationParameters.seed = seed;
+        arenaGenerator.GenerateArenaFromParams();
     }
 
-    public void OnRandomSeedButtonClicked(TMP_InputField seedInputField)
+    public void OnRandomSeedButtonClicked()
     {
         int seed = Random.Range(100000, 999999);
         seedInputField.text = seed.ToString();
-        mapGenerator.seed = seed;
-        arenaGenerator.GenerateArena();
+        generationParameters.seed = int.Parse(seedInputField.text);
+        arenaGenerator.GenerateArenaFromParams();
     }
 
     public void OnFalloffChange()
     {
         bool useFalloff = falloffToggle.isOn;
-        mapGenerator.useFalloff = useFalloff;
-        arenaGenerator.GenerateArena();
+        generationParameters.falloff = useFalloff;
+        arenaGenerator.GenerateArenaFromParams();
     }
 
-    public void OnOctavesChange(Slider slider)
+    public void OnOctavesChange()
     {
-        int octaves = (int)slider.value;
-        mapGenerator.octaves = octaves;
-        arenaGenerator.GenerateArena();
+        int octaves = (int)octavesSlider.value;
+        generationParameters.octaves = octaves;
+        arenaGenerator.GenerateArenaFromParams();
     }
 
-    public void OnScaleChange(Slider slider)
+    public void OnScaleChange()
     {
-        float scale = slider.value;
-        mapGenerator.noiseScale = scale;
-        arenaGenerator.GenerateArena();
+        float scale = scaleSlider.value;
+        generationParameters.scale = scale;
+        arenaGenerator.GenerateArenaFromParams();
     }
 
-    public void OnPersistanceChange(Slider slider)
+    public void OnPersistanceChange()
     {
-        float persistance = slider.value;
-        mapGenerator.persistance = persistance;
-        arenaGenerator.GenerateArena();
+        float persistance = persistanceSlider.value;
+        generationParameters.persistance = persistance;
+        arenaGenerator.GenerateArenaFromParams();
     }
 
-    public void OnLacunarityChange(Slider slider)
+    public void OnLacunarityChange()
     {
-        float lacunarity = slider.value;
-        mapGenerator.lacunarity = lacunarity;
-        arenaGenerator.GenerateArena();
+        float lacunarity = lacunaritySlider.value;
+        generationParameters.lacunarity = lacunarity;
+        arenaGenerator.GenerateArenaFromParams();
     }
 }
